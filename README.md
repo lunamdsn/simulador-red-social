@@ -41,7 +41,7 @@ simulador-red-social/
 ## Instalación
 Clonar el repositorio:
 ```bash
-git clone URL_DEL_REPOSITORIO
+git clone (https://github.com/lunamdsn/simulador-red-social.git)
 ```
 
 Entrar en la carpeta:
