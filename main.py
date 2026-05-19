@@ -39,28 +39,20 @@ print(f"Tiempo total: {ultimo[1]}")
 
 grado = dict(G.degree())
 
-influyente = max(
-    grado,
-    key=grado.get)
+influyente = max(grado, key=grado.get)
 
 print(f"Usuario más conectado: {influyente}")
 
-camino = nx.shortest_path(
-    G,
-    source=origen,
-    target=ultimo[0],
-    weight="weight")
-
 print("\nCamino más corto:")
-print(" -> ".join(camino))
 
-distancia = nx.shortest_path_length(
-    G,
-    source=origen,
-    target=ultimo[0],
-    weight="weight")
+if nx.has_path(G, origen, ultimo[0]):
+    camino = nx.shortest_path(G, source=origen, target=ultimo[0], weight="weight")
+    distancia = nx.shortest_path_length(G, source=origen, target=ultimo[0], weight="weight")
 
-print(f"Coste total del camino: {distancia}")
+    print(" -> ".join(camino))
+    print(f"Coste total del camino: {distancia}")
+else:
+    print("No hay conexión entre los usuarios (grafo no conectado)")
 
 for paso in pasos:
     dibujar_grafo(G, paso, pos)
