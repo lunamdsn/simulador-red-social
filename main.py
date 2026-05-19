@@ -54,8 +54,10 @@ if nx.has_path(G, origen, ultimo[0]):
 else:
     print("No hay conexión entre los usuarios (grafo no conectado)")
 
+
 for paso in pasos:
     dibujar_grafo(G, paso, pos)
+    plt.pause(0.8)
 
 plt.ioff()
 plt.show()

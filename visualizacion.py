@@ -1,14 +1,24 @@
 import matplotlib.pyplot as plt
 import networkx as nx
 
-plt.ion()
+ax = None
+
+def iniciar_grafico():
+    global ax
+    plt.ion()
+    fig, ax = plt.subplots()
 
 def dibujar_grafo(G, informados=None, pos=None):
+
+    global ax 
+
+    if ax is None:
+        iniciar_grafico()
 
     if informados is None:
         informados = []
 
-    plt.clf()
+    ax.clear()
 
     colores = []
     for nodo in G.nodes():
@@ -31,12 +41,8 @@ def dibujar_grafo(G, informados=None, pos=None):
         edge_color="gray")
 
     labels = nx.get_edge_attributes(G, "weight")
-    nx.draw_networkx_edge_labels(
-        G,
-        pos,
-        edge_labels=labels)
+    nx.draw_networkx_edge_labels(G,pos,edge_labels=labels)
 
-    plt.title("Propagación del rumor")
+    ax.set_title("Propagación del rumor")
 
     plt.draw()
-    plt.pause(1.0) 
