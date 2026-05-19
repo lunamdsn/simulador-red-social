@@ -58,5 +58,5 @@ pip install -r requirements.txt
 ## Ejecución
 Ejecutar el programa:
 ```bash
-python3 main.py
+python main.py
 ``` 
